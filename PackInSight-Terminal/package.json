@@ -1,0 +1,45 @@
+{
+  "name": "packinsight",
+  "version": "1.0.0",
+  "description": "AI-powered npm package security scanner with dependency analysis and risk recommendations",
+  "main": "src/index.js",
+  "bin": {
+    "packinsight": "./bin/packinsight.js"
+  },
+  "scripts": {
+    "start": "node bin/packinsight.js",
+    "test": "node tests/test.js",
+    "scan": "node bin/packinsight.js scan"
+  },
+  "keywords": [
+    "npm",
+    "security",
+    "scanner",
+    "dependencies",
+    "vulnerability",
+    "ai",
+    "openai",
+    "cli",
+    "package-analysis",
+    "typosquatting",
+    "risk-assessment"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "chalk": "^4.1.2",
+    "cli-table3": "^0.6.5",
+    "commander": "^11.1.0",
+    "openai": "^6.9.1",
+    "ora": "^5.4.1",
+    "semver": "^7.5.4"
+  }
+}
