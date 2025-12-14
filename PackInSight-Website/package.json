@@ -57,6 +57,7 @@
         "cmdk": "^1.1.1",
         "cobe": "^0.6.5",
         "date-fns": "^4.1.0",
+        "dotenv": "^17.2.3",
         "dotted-map": "^2.2.3",
         "drizzle-orm": "^0.44.7",
         "embla-carousel-auto-scroll": "^8.6.0",

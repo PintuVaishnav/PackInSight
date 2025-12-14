@@ -1,6 +1,6 @@
 import { drizzle } from 'drizzle-orm/libsql';
 import { createClient, Client } from '@libsql/client';
-import * as schema from '@/db/schema';
+import * as schema from './schema';
 
 // ============================================
 // ENVIRONMENT VALIDATION
