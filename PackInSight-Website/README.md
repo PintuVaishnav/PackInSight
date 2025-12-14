@@ -176,7 +176,7 @@ GITHUB_TOKEN=<your-github-token>
 4. Set Authorization callback URL: http://localhost:3000/api/auth/callback/github
 ```
 ```
-#Google Authentication Setup
+# Google Authentication Setup
 1. Go to https://console.cloud.google.com/apis/credentials
 2. Edit your OAuth 2.0 Client ID
 3. Add to Authorized JavaScript origins:http://localhost:3000
