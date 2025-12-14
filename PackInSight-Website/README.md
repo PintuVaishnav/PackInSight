@@ -1,6 +1,7 @@
 # PackInsight - Package Security Scanner
 
-A powerful web application that scans npm, Python, and Docker packages for security vulnerabilities, popularity, and reliability.
+A powerful website that scans npm, Python, and Docker packages for security vulnerabilities, popularity, and reliability.
+The platform analyzes package metadata, known CVEs, dependency health, and ecosystem signals to help developers identify risks early in the development lifecycle. It provides actionable insights such as severity-based vulnerability reports, package trust indicators, and historical scan tracking, enabling informed dependency selection and safer software supply chain decisions.
 
 ![PackInsight](https://github.com/PintuVaishanv/post-images/blob/main/unnamed_16x9.png?raw=truefit=crop)
 
