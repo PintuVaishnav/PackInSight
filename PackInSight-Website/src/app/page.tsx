@@ -543,7 +543,7 @@ export default function Home() {
             <div className="flex items-center gap-2">
               <Shield className="h-5 w-5 text-muted-foreground" />
               <span className="text-sm text-muted-foreground">
-                © 2024 PackInsight. Secure your dependencies.
+                © 2026 PackInsight. Secure your dependencies.
               </span>
             </div>
             <div className="flex gap-4">
