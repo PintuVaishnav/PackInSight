@@ -1,1 +1,1 @@
-# PackInSight
+# PackInSight - AI Powered Package Scanner
