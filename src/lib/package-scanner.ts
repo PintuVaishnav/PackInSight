@@ -964,7 +964,7 @@ export async function scanPackages(packages: PackageInfo[]): Promise<PackageAnal
       let metadata: any = {};
       let downloadStats: DownloadStats = {};
 
-      // Fetch package data based on ecosystem
+      
       if (pkg.ecosystem === 'npm') {
         metadata = await fetchNpmPackageData(pkg.name, pkg.version);
         downloadStats = await fetchNpmDownloadStats(pkg.name);
@@ -1041,3 +1041,4 @@ export async function scanPackages(packages: PackageInfo[]): Promise<PackageAnal
   console.log(`Scan complete! Analyzed ${results.length} packages.`);
   return results;
 }
+
