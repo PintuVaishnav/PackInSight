@@ -6,12 +6,18 @@ import { headers } from "next/headers";
 import { db } from "@/db";
 
 export const auth = betterAuth({
+ 
+  baseURL: process.env.BETTER_AUTH_URL || "https://packinsight.vercel.app",
+  secret: process.env.BETTER_AUTH_SECRET,
+
   database: drizzleAdapter(db, {
     provider: "sqlite",
   }),
+
   emailAndPassword: {
     enabled: true,
   },
+
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -22,12 +28,20 @@ export const auth = betterAuth({
       clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     },
   },
+
   plugins: [bearer()],
+
   trustedOrigins: [
-    "http://localhost:3000",
-    process.env.BETTER_AUTH_URL || "http://localhost:3000",
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+    "https://packinsight.vercel.app",
   ],
+
+  // ADD THIS - Important for production cookies
+  advanced: {
+    useSecureCookies: true,
+    crossSubDomainCookies: {
+      enabled: false,
+    },
+  },
 });
 
 // Session validation helper
@@ -35,3 +49,9 @@ export async function getCurrentUser(request: NextRequest) {
   const session = await auth.api.getSession({ headers: await headers() });
   return session?.user || null;
 }
+
+
+
+
+
+
