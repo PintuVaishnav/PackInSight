@@ -1,0 +1,11 @@
+replicaCount: 1
+
+image:
+  repository: 721094929349.dkr.ecr.us-east-1.amazonaws.com/nextjs-prod-repo
+  tag: "a69a22cb533036fde9b884e87953eb0a278a1cef"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 3000
