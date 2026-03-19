@@ -198,3 +198,4 @@ const deleteScan = async (scanId: string) => {
     </div>
   )
 }
+   
