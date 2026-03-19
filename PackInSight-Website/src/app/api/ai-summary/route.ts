@@ -3,9 +3,6 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function POST(request: NextRequest) {
   try {
     const { scanResult, reportType } = await request.json();
-    
-    // Mock AI-generated summary
-    // In production, integrate with OpenAI API using OPENAI_API_KEY
     const summaries = {
       technical: {
         overview: `Technical Analysis Report\n\nScanned ${scanResult.totalPackages} packages with ${scanResult.totalVulnerabilities} vulnerabilities detected across ${scanResult.vulnerablePackages} packages.`,

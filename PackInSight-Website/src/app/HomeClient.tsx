@@ -1,6 +1,4 @@
-// src/app/HomeClient.tsx
 "use client"
-
 import { useState, useEffect } from "react"
 import { Shield, History, Github, LogOut, User, Download, Zap, Lock, ChevronRight, ArrowRight, Scan, Moon, Sun, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -17,8 +15,6 @@ import { ScanResult } from "@/lib/package-scanner"
 import { useRouter, useSearchParams } from "next/navigation"
 import { toast } from "sonner"
 import { exportToPDF } from "@/lib/pdf-export"
-
-// Google Icon Component
 const GoogleIcon = () => (
   <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -28,7 +24,6 @@ const GoogleIcon = () => (
   </svg>
 )
 
-// NPM Logo
 const NpmLogo = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 256 256" className={className || "h-8 w-8"}>
     <rect fill="#C12127" width="256" height="256" rx="8" />
@@ -777,3 +772,8 @@ export default function HomeClient() {
     </div>
   )
 }
+
+
+
+
+

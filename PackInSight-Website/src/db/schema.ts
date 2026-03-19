@@ -1,6 +1,5 @@
 import { sqliteTable, integer, text } from 'drizzle-orm/sqlite-core';
 
-// Auth tables for better-auth
 export const user = sqliteTable("user", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
