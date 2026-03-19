@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
 
     const { package: pkg, metadata, vulnerabilities, githubStats, downloadStats, trustScore } = analysis;
 
-    // Fetch all available versions for the package
+    
     let allVersions: string[] = [];
     let latestVersion = metadata.latestVersion || metadata.currentVersion;
     
@@ -33,10 +33,8 @@ export async function POST(request: NextRequest) {
       console.error('Error fetching versions:', error);
     }
 
-    // Fetch alternative packages based on ecosystem
     const alternatives = await fetchAlternativePackages(pkg.name, pkg.ecosystem, metadata.description);
 
-    // Build context for AI
     const context = {
       packageName: pkg.name,
       currentVersion: metadata.currentVersion || pkg.version,
@@ -78,7 +76,6 @@ async function fetchAlternativePackages(packageName: string, ecosystem: string, 
 
   try {
     if (ecosystem === 'npm') {
-      // Search for similar packages
       const searchTerm = packageName.split('-')[0]; // Use first part of package name
       const response = await fetch(`https://registry.npmjs.org/-/v1/search?text=${searchTerm}&size=5`);
       
@@ -88,7 +85,6 @@ async function fetchAlternativePackages(packageName: string, ecosystem: string, 
         
         for (const item of packages) {
           if (item.package.name !== packageName) {
-            // Fetch download stats for alternative
             let downloads = 0;
             try {
               const downloadResponse = await fetch(
@@ -99,7 +95,7 @@ async function fetchAlternativePackages(packageName: string, ecosystem: string, 
                 downloads = downloadData.downloads || 0;
               }
             } catch (e) {
-              // Ignore download errors
+              
             }
 
             alternatives.push({
@@ -116,11 +112,9 @@ async function fetchAlternativePackages(packageName: string, ecosystem: string, 
         }
       }
     } else if (ecosystem === 'python') {
-      // Search PyPI for similar packages
       const searchTerm = packageName.toLowerCase();
       const response = await fetch(`https://pypi.org/search/?q=${searchTerm}`);
       
-      // For Python, we'll use a simpler approach with common alternatives
       const commonAlternatives: Record<string, string[]> = {
         'django': ['flask', 'fastapi', 'pyramid'],
         'flask': ['django', 'fastapi', 'bottle'],
@@ -138,7 +132,6 @@ async function fetchAlternativePackages(packageName: string, ecosystem: string, 
         });
       }
     } else if (ecosystem === 'docker') {
-      // Common Docker image alternatives
       const commonAlternatives: Record<string, string[]> = {
         'nginx': ['apache', 'caddy', 'traefik'],
         'node': ['node-alpine', 'bun', 'deno'],

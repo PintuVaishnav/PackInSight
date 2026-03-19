@@ -37,45 +37,36 @@ export default function HistoryPage() {
     }
   }, [session])
 
-  const fetchHistory = async () => {
-    try {
-      const token = localStorage.getItem("bearer_token")
-      const response = await fetch("/api/history", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        setScans(data)
-      }
-    } catch (error) {
-      console.error("Failed to fetch history:", error)
-    } finally {
-      setLoading(false)
+const fetchHistory = async () => {
+  try {
+    const response = await fetch("/api/history") // ← no headers needed
+    if (response.ok) {
+      const data = await response.json()
+      setScans(data)
     }
+  } catch (error) {
+    console.error("Failed to fetch history:", error)
+  } finally {
+    setLoading(false)
   }
+}
 
-  const deleteScan = async (scanId: string) => {
-    try {
-      const token = localStorage.getItem("bearer_token")
-      const response = await fetch("/api/history", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ scanId }),
-      })
-
-      if (response.ok) {
-        setScans(scans.filter(scan => scan.id !== scanId))
-      }
-    } catch (error) {
-      console.error("Failed to delete scan:", error)
+const deleteScan = async (scanId: string) => {
+  try {
+    const response = await fetch("/api/history", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json", // ← only keep this
+      },
+      body: JSON.stringify({ scanId }),
+    })
+    if (response.ok) {
+      setScans(scans.filter(scan => scan.id !== scanId))
     }
+  } catch (error) {
+    console.error("Failed to delete scan:", error)
   }
+}
 
   const viewScan = (scan: ScanHistory) => {
     // Store scan result in sessionStorage for viewing
@@ -207,3 +198,4 @@ export default function HistoryPage() {
     </div>
   )
 }
+   

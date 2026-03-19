@@ -2,20 +2,19 @@ import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import { ScanResult, PackageAnalysis } from './package-scanner';
 
-// Professional enterprise color scheme - muted and sophisticated
 const colors = {
   primary: [59, 130, 246],        // Blue 500
   secondary: [139, 92, 246],      // Violet 500
   success: [34, 197, 94],         // Green 500
   warning: [251, 146, 60],        // Orange 400
   danger: [239, 68, 68],          // Red 500
-  info: [14, 165, 233],           // Sky 500
-  dark: [30, 41, 59],             // Slate 800
-  light: [248, 250, 252],         // Slate 50
+  info: [14, 165, 233],           
+  dark: [30, 41, 59],             
+  light: [248, 250, 252],         
   white: [255, 255, 255],
-  text: [51, 65, 85],             // Slate 700
-  textLight: [100, 116, 139],     // Slate 500
-  border: [226, 232, 240],        // Slate 200
+  text: [51, 65, 85],             
+  textLight: [100, 116, 139],     
+  border: [226, 232, 240],        
 };
 
 const formatNumber = (num?: number) => {
@@ -35,7 +34,7 @@ const getSeverityColor = (severity: string) => {
   switch (severity.toLowerCase()) {
     case 'critical': return colors.danger;
     case 'high': return colors.warning;
-    case 'medium': return [251, 191, 36]; // Amber
+    case 'medium': return [251, 191, 36]; 
     case 'low': return colors.info;
     default: return colors.textLight;
   }
@@ -51,7 +50,6 @@ export function exportToPDF(scanResult: ScanResult, aiSummary?: any) {
   const doc = new jsPDF();
   let yPos = 20;
   
-  // ==================== HEADER ====================
   doc.setFillColor(...colors.primary);
   doc.rect(0, 0, 210, 45, 'F');
   
@@ -71,7 +69,6 @@ export function exportToPDF(scanResult: ScanResult, aiSummary?: any) {
   
   yPos = 55;
   
-  // ==================== EXECUTIVE SUMMARY ====================
   doc.setFillColor(...colors.light);
   doc.rect(0, yPos - 5, 210, 10, 'F');
   doc.setTextColor(...colors.dark);
